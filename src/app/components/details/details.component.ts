@@ -28,7 +28,11 @@ export class DetailsComponent {
 
   constructor() {
     const housingLocationId = Number(this.route.snapshot.params['id']); //html non ha bisogno di questo
-    this.casetta = this.casettaService.getHousingLocationById(housingLocationId) //this puo essere usato da html
+    this.casettaService.getHousingLocationById(housingLocationId).then(casettina => {
+      if(casettina){
+        this.casetta = casettina;
+      }
+    }) //this puo essere usato da html
   }
 
   submitApplication() {

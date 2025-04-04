@@ -19,8 +19,12 @@ export class HomeComponent {
   listaDelleCaseFiltrate: HousingLocation[] = [];
 
   constructor() {
-    this.casettaList = this.casettaService.getAllHousingLocations();
-    this.listaDelleCaseFiltrate = this.casettaList;
+    // this.casettaList = this.casettaService.getAllHousingLocations();
+    // this.listaDelleCaseFiltrate = this.casettaList;
+    this.casettaService.getAllHousingLocations().then(casette => {
+      this.casettaList = casette;
+      this.listaDelleCaseFiltrate = this.casettaList;
+    })
   }
 
   filterResults(text: string){
